@@ -1,0 +1,292 @@
+@CHARSET "ISO-8859-1";
+
+.container-all {
+	padding-top: 0;
+	margin-top: 0;
+}
+
+h1{
+	margin-top: 0;
+}
+
+/*******************************
+ **** MODAL
+ *******************************/
+.modal-backdrop.am-fade {
+	opacity: .5;
+	transition: opacity .15s linear;
+	&.ng-enter {
+		opacity: 0;
+		&.ng-enter-active {
+			opacity: .5;
+		}
+	}
+	&.ng-leave {
+		opacity: .5;
+		&.ng-leave-active {
+			opacity: 0;
+		}
+	}
+}
+      
+/*******************************
+ **** SPINNER
+ *******************************/
+.spinner {
+	background: #AAA;
+	opacity: 0.3;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index:1000000;
+}
+
+/*******************************
+ **** ALERT
+ *******************************/
+
+.alert-container {
+    padding	: 0 40px 0 50px;
+    margin	: 5px;
+}
+
+/*******************************
+ **** FORM
+ *******************************/
+ .form-group .help-block {
+  	display: none;
+}
+ 
+.form-group.has-error .help-block {
+  	display: block;
+  	font-size: small;
+}
+
+/*******************************
+ * *** TWO COLUMN
+ *******************************/
+.twocolumn-wrap {
+	width: 100%;
+	height: 100%;
+	overflow:auto;
+}
+
+.twocolumn-form {
+    float:left; 
+    width: 30%;
+}
+
+.twocolumn-table {	
+	float: right;
+    width: 70%;
+    padding: 0 50px;
+}
+
+
+/*******************************
+ * *** ONE COLUMN
+ *******************************/
+.onecolumn-wrap {
+	width: 100%;
+	height: 100%;
+	overflow:auto;
+}
+
+.onecolumn-table {	
+    width: 100%;
+    padding: 0 50px;
+}
+
+/**
+ * CONSOLE
+ */
+.console-wrap {
+	width: 100%;
+	height: 100%;
+	overflow:auto;
+}
+
+.console-alert {
+    padding: 20px 50px;
+}
+
+.console-table {	
+    width: 100%;
+    padding: 0 50px;
+    text-align: left;
+	height:350px;
+    
+    display: block;
+    overflow: auto;
+}
+
+.nav-tabs > li .close {
+	margin: 0 0 0 10px;
+	font-size: 18px;
+}
+.marginBottom {
+	margin-bottom :1px !important;
+}
+
+/**
+ * SIDEBAR
+ */
+
+.row{
+    margin-left:0px;
+    margin-right:0px;
+}
+
+
+
+#wrapper {
+    padding-left: 70px;
+    transition: all .4s ease 0s;
+    height: 100%
+}
+
+#sidebar-wrapper {
+    margin-left: -250px;
+    left: 70px;
+    width: 250px;
+    background: #222;
+    position: fixed;
+    height: 100%;
+    z-index: 10000;
+    transition: all .4s ease 0s;
+}
+
+.sidebar-nav {
+    display: block;
+    float: left;
+    width: 250px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#page-content-wrapper {
+    padding-left: 0;
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+}
+#wrapper.active {
+    padding-left: 250px;
+}
+#wrapper.active #sidebar-wrapper {
+    left: 250px;
+}
+
+#page-content-wrapper {
+  width: 100%;
+}
+
+#sidebar_menu li a, .sidebar-nav li a {
+    color: #999;
+    display: block;
+    float: left;
+    text-decoration: none;
+    width: 250px;
+    background: #252525;
+    border-top: 1px solid #373737;
+    border-bottom: 1px solid #1A1A1A;
+    -webkit-transition: background .5s;
+    -moz-transition: background .5s;
+    -o-transition: background .5s;
+    -ms-transition: background .5s;
+    transition: background .5s;
+}
+.sidebar_name {
+    padding-top: 25px;
+    color: #fff;
+    opacity: .7;
+}
+
+.sidebar-nav li {
+  line-height: 40px;
+  text-indent: 20px;
+}
+
+.sidebar-nav li a {
+  color: #999999;
+  display: block;
+  text-decoration: none;
+}
+
+.sidebar-nav li a:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+  text-decoration: none;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  height: 65px;
+  line-height: 60px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.sidebar-nav > .sidebar-brand a {
+  color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
+
+.main_icon
+{
+   float:right;
+   padding-right: 30px;
+   padding-top:20px;
+}
+
+.icon
+{
+    float:right;
+   padding-right: 35px;
+   padding-top:15px;
+}
+
+.sub_icon
+{
+    float:right;
+   padding-right: 65px;
+   padding-top:10px;
+}
+.content-header {
+  height: 65px;
+  line-height: 65px;
+}
+
+.content-header h1 {
+  margin: 0;
+  margin-left: 20px;
+  line-height: 65px;
+  display: inline-block;
+}
+
+@media (max-width:767px) {
+    #wrapper {
+    padding-left: 70px;
+    transition: all .4s ease 0s;
+}
+#sidebar-wrapper {
+    left: 70px;
+}
+#wrapper.active {
+    padding-left: 250px;
+}
+#wrapper.active #sidebar-wrapper {
+    left: 250px;
+    width: 250px;
+    transition: all .4s ease 0s;
+}

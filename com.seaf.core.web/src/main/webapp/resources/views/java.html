@@ -1,0 +1,60 @@
+
+<!-- thread.html -->
+<div class="jumbotron text-center container-all">
+	<h1>{{title}}</h1>
+	
+	<div class="onecolumn-wrap">
+		<div class="alert-container" id="alerts"></div>
+  	
+		<div class="onecolumn-table" id="threads-table" style="display: none;">
+			<table ng-table="threadsTableParams" show-filter="false" class="table table-striped table-bordered">
+				<tbody>
+					<tr ng-repeat="thread in $data">
+						<td data-title="'ID'" sortable="'id'">{{thread.id}}</td>
+						<td data-title="'Name'" sortable="'name'">{{thread.name}}</td>
+						<td data-title="'State'" sortable="'state'">{{thread.state}}</td>
+						<td data-title="'Priority'" sortable="'priority'">{{thread.priority}}</td>
+						<td data-title="'Is daemon'" sortable="'daemon'">{{thread.daemon}}</td>
+						<td data-title="'Group'" sortable="'groupName'">{{thread.groupName}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="onecolumn-table" id="system_properties-table" style="display: none;">
+			<table ng-table="systemPropertiesTableParams" show-filter="false" class="table table-striped table-bordered">
+				<tbody>
+					<tr ng-repeat="systemProperty in $data">
+						<td data-title="'Key'" sortable="'key'">{{systemProperty.key}}</td>
+						<td data-title="'Value'">{{systemProperty.value}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="onecolumn-table" id="jvm_arguments-table" style="display: none;">
+			<table ng-table="jvmArgumentsTableParams" show-filter="false" class="table table-striped table-bordered">
+				<tbody>
+					<tr ng-repeat="jvmArg in $data">
+						<td data-title="'Key'" sortable="'key'">{{jvmArg.key}}</td>
+						<td data-title="'Value'">{{jvmArg.value}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="onecolumn-table" id="app_properties-table" style="display: none;">
+			<table ng-table="appPropertiesTableParams" show-filter="false" class="table table-striped table-bordered">
+				<tbody>
+					<tr ng-repeat="appProperty in $data">
+						<td data-title="'Key'" sortable="'key'">{{appProperty.key}}</td>
+						<td data-title="'Value'">{{appProperty.value}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+	</div>
+	
+</div>
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+
+    <!-- To enable JMX Management -->
+    <jmxConfigurator/>
+
+	<!-- *************************************************************
+		 *** APPENDER
+		 ************************************************************* -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	 
+	<!-- *************************************************************
+		 *** LOGGER
+		 ************************************************************* 
+	<logger name="com.seaf.core.service" level="DEBUG" additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+	-->
+
+	<!-- *************************************************************
+		 *** ROOT
+		 ************************************************************* -->
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>

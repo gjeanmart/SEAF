@@ -1,0 +1,89 @@
+
+<!-- user-detail.html -->
+<div class="jumbotron text-center container-all">
+	<h1>{{user.firstName}} {{user.lastName}}</h1>
+	
+	<div class="onecolumn-wrap">
+	
+		<div class="alert-container" id="alerts"></div>
+
+		<div class="onecolumn-table">
+		    <form name="userForm" class="form-horizontal" novalidate>
+	
+		      	<div class="form-group" show-errors='{showSuccess: true}'>
+		        	<label class="control-label col-xs-4">First name *</label>
+		        	<div class="col-xs-8">
+		        		<input type="text" class="form-control" name="firstName" ng-model="user.firstName" placeholder="First name" required />
+		        		<p class="help-block" ng-if="userForm.firstName.$error.required">The user's first name is required</p>
+		        	</div>
+		        	
+		      	</div>
+		      	
+		      	<div class="form-group" show-errors='{showSuccess: true}'>
+		        	<label class="control-label col-xs-4">Last name *</label>
+		        	<div class="col-xs-8">
+		        		<input type="text" class="form-control" name="lastName" ng-model="user.lastName" placeholder="Last name" required />
+		        		<p class="help-block" ng-if="userForm.lastName.$error.required">The user's last name is required</p>	
+		        	</div>
+		      	</div>
+		      
+		      	<div class="form-group" show-errors='{showSuccess: true}'>
+		        	<label class="control-label col-xs-4">Email *</label>
+		         	<div class="col-xs-8">
+		         		<input type="email" class="form-control" name="email" ng-model="user.email" placeholder="Email" required />
+		         		<p class="help-block" ng-if="userForm.email.$error.required">The user's email is required</p>
+		        		<p class="help-block" ng-if="userForm.email.$error.email">The email address is invalid</p>
+		         	</div>
+		      	</div>
+		      	
+			  	<div class="form-group"show-errors='{showSuccess: true}'>
+			  
+		        	<label class="control-label col-xs-4">Birth date</label>
+		         	<div class="col-xs-8">
+		         		<p class="input-group">
+		         			<input 	type="text" 
+		         					class="form-control" 
+		         					data-max-date="today" 
+		         					iconRight="glyphicon glyphicon-chevron-right" 
+		         					data-autoclose="1" 
+		         					ng-model="user.birthDate" 
+		         					name="birthdate" 
+		         					placeholder="Birth date" 
+		         					bs-datepicker />
+		         			<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+		         		</p>
+		         		<p class="help-block" ng-if="userForm.birthdate.$invalid">The birth date is invalid</p>    	
+		         	</div>
+			  	</div>
+
+		      	<div class="form-group" show-errors='{showSuccess: true}'>
+		        	<label class="control-label col-xs-4">Groups</label>
+		         	<div class="col-xs-8">
+						<p class="input-group">
+							<button type="button" 
+									name="groups"
+									placeholder="Choose one or several groups ..."
+									max-length-html="groups selected"
+									class="btn btn-default" 
+									ng-model="user.groups" 
+									data-multiple="1" 
+									data-animation="am-flip-x" 
+									ng-options="group.name for group in groups track by group.id" 
+									bs-select>
+							  Action <span class="caret"></span>
+							</button>
+						</p>
+		         	</div>
+		      	</div>
+		      
+	       		<div class="form-group">
+	            	<div class="col-xs-offset-2 col-xs-10">
+		      			<button class="btn btn-primary" ng-click="editUser(user)">Edit User</button>
+		      			<button class="btn btn-link" ui-sref="user">Return</button>
+	            	</div>
+	            </div>
+		    </form>
+		</div>
+	</div>
+	
+</div>

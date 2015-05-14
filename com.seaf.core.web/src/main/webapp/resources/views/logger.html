@@ -1,0 +1,36 @@
+
+<!-- user.html -->
+<div class="jumbotron text-center container-all">
+	<h1>Loggers</h1>
+	
+	<div class="onecolumn-wrap">
+	
+		<div class="alert-container" id="alerts"></div>
+		    	
+		<div class="onecolumn-table">
+			<table ng-table="loggerTableParams" show-filter="false" class="table table-striped table-bordered">
+				<tbody>
+					<tr ng-repeat="logger in $data">
+						<td data-title="'Name'" sortable="'loggerName'">{{logger.loggerName}}</td>
+						<td data-title="'Level'">
+					        <div class="btn-group">
+					            <button  style="width: 100px;" type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">{{logger.logLevel}} <span class="caret"></span></button>
+					            <ul class="dropdown-menu">
+					                <li><a href="#logger"  ng-click="changeLogLevel(logger.loggerName, 'TRACE')">TRACE</a></li>
+					                <li><a href="#logger"  ng-click="changeLogLevel(logger.loggerName, 'DEBUG')">DEBUG</a></li>
+					                <li><a href="#logger"  ng-click="changeLogLevel(logger.loggerName, 'INFO')">INFO</a></li>
+					                <li><a href="#logger"  ng-click="changeLogLevel(logger.loggerName, 'ERROR')">ERROR</a></li>
+					                <li><a href="#logger"  ng-click="changeLogLevel(logger.loggerName, 'WARN')">WARN</a></li>
+					                <li><a href="#logger"  ng-click="changeLogLevel(logger.loggerName, 'OFF')">OFF</a></li>
+					            </ul>
+					        </div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+	</div>
+	
+</div>
+

@@ -1,0 +1,92 @@
+
+<!-- user.html -->
+<div class="jumbotron text-center container-all">
+	<h1>{{chartid}}</h1>
+	
+	<div class="onecolumn-wrap">
+	
+		<div class="alert-container" id="alerts"></div>
+
+	    <div class="">Periodicity : 
+	        <div class="btn-group"><a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#">REALTIME <span class="caret"></span></a>
+	            <ul class="dropdown-menu" id="periodicity-combo">
+	                <li><a href="#" ng-click="setDateTime('REALTIME')">REALTIME</a></li>
+	                <li><a href="#" ng-click="setDateTime('HOURLY')">HOURLY</a></li>
+	                <li><a href="#" ng-click="setDateTime('DAILY')">DAILY</a></li>
+	                <li><a href="#" ng-click="setDateTime('WEEKLY')">WEEKLY</a></li>
+	                <li><a href="#" ng-click="setDateTime('MONTHLY')">MONTHLY</a></li>
+	            </ul>
+	            <input type="hidden" id="periodicity-input" value="REALTIME" />
+	        </div>
+	        From : 
+            <div class="btn-group" style="top: 10px">
+                <div class="input-group date form_datetime" data-date-format="yyyy-mm-dd hh:ii" data-link-field="dtp_input1">
+                    <input class="form-control" size="16" type="text" readonly id="startDate" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+				<input type="hidden" id="dtp_input1" value="" /><br />
+            </div>
+	        To : 
+            <div class="btn-group" style="top: 10px">
+                <div class="input-group date form_datetime" data-date-format="yyyy-mm-dd hh:ii" data-link-field="dtp_input2">
+                    <input class="form-control" size="16" type="text" readonly id="endDate" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+				<input type="hidden" id="dtp_input2" value="" /><br />
+            </div>
+	        <div class="btn-group">
+	            <button type="button" id="btnSearch" class="btn btn-primary"  ng-click="refreshChart()">Refresh</button>
+	        </div>
+	    </div>
+		
+		<div role="tabpanel" class="onecolumn-table">
+		  	<!-- Nav tabs -->
+		  	<ul class="nav nav-tabs" role="tablist">
+		    	<li role="presentation" id="MemoryTab"><a  ui-sref="monitoring({ chartid : 'Memory' })" aria-controls="Memory" role="tab" data-toggle="tab">Memory</a></li>
+		    	<li role="presentation" id="CPUTab"><a  ui-sref="monitoring({ chartid : 'CPU' })" aria-controls="CPU" role="tab" data-toggle="tab">CPU</a></li>
+		 	</ul>
+		
+		  	<!-- Tab panels -->
+			<div class="tab-content">
+		    	<div role="tabpanel" class="tab-pane" id="Memory">
+					<div id="heapDataChart" style="height: 375px;">
+						 <svg></svg>
+					</div>
+		   		</div>
+		    	<div role="tabpanel" class="tab-pane" id="CPU">
+					<div id="cpuDataChart" style="height: 375px;">
+						 <svg></svg>
+					</div>
+		    	</div>
+			</div>
+		</div>
+		    		
+	</div>
+	
+</div>
+
+<script type="text/javascript">
+$(function() {
+    $('.form_datetime').datetimepicker({
+    	format: 'yyyy-mm-dd hh:ii',
+        weekStart: 1,
+        todayBtn:  1,
+		todayHighlight: 1,
+		autoclose: true,
+        todayBtn: true
+    });
+
+	$(".btn-group a").click(function(e){
+		e.preventDefault();
+	});
+
+	$(".dropdown-menu li a").click(function(e){
+		e.preventDefault();
+		var selText = $(this).text();
+		$(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+	});
+
+});
+
+
+</script>

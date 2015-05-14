@@ -1,0 +1,70 @@
+
+<!-- user.html -->
+<div class="jumbotron text-center container-all">
+	<h1>Groups</h1>
+	
+	<div class="twocolumn-wrap">
+	
+		<div class="alert-container" id="alerts"></div>
+		    	
+		<div class="twocolumn-form">
+		    <form name="groupForm" class="form-horizontal" novalidate>
+	
+		      	<div class="form-group" show-errors='{showSuccess: true}'>
+		        	<label class="control-label col-xs-4">Name *</label>
+		        	<div class="col-xs-8">
+		        		<input type="text" class="form-control" name="name" ng-model="group.name" placeholder="Name" required />
+		        		<p class="help-block" ng-if="groupForm.name.$error.required">The group's name is required</p>
+		        	</div>
+		      	</div>
+		      	
+		      	<div class="form-group" show-errors='{showSuccess: true}'>
+		        	<label class="control-label col-xs-4">Description *</label>
+		        	<div class="col-xs-8">
+		        		<textarea class="form-control" rows="2" name="description" ng-model="group.description" placeholder="Description" required></textarea>
+		        	</div>
+		        	<p class="help-block" ng-if="groupForm.name.$error.required">The group's description is required</p>
+		        </div>
+		      
+	       		<div class="form-group">
+	            	<div class="col-xs-offset-2 col-xs-10">
+		      			<button class="btn btn-primary" ng-click="addGroup(group)">Add group</button>
+		      			<button class="btn btn-link" ng-click="reset()">Reset</button>
+	            	</div>
+	            </div>
+		    </form>
+		</div>
+
+		<div class="twocolumn-table">
+			<table ng-table="groupsTableParams" show-filter="true" class="table table-striped table-bordered">
+				<tbody>
+					<tr ng-repeat="group in $data">
+						<td data-title="'#'" sortable="'id'">{{group.id}}</td>
+						<td data-title="'Name'" filter="{ 'name': 'text' }" sortable="'name'">
+							<span ng-if="editId!==group.id">{{group.name}}</span>
+							<div ng-if="editId===group.id">
+								<input class="form-control" type="text" ng-model="group.name" required />
+							</div>
+						</td>
+						<td data-title="'Description'" filter="{ 'description': 'text' }">
+							<span ng-if="editId!==group.id">{{group.description}}</span>
+							<div ng-if="editId===group.id">
+								<input class="form-control" type="text" ng-model="group.description" required />
+							</div>
+						</td>
+						
+						<td data-title="'Actions'" width="100">
+							<button ng-if="editId!==group.id" type="button" class="btn btn-primary btn-sm" ng-click="setEditId(group.id)" title="Edit"><i class="glyphicon glyphicon-edit"></i></button>
+							<button ng-if="editId!==group.id" type="button" class="btn btn-danger btn-sm" ng-click="deleteGroup(group)" title="Delete"><i class="glyphicon glyphicon-remove"></i></button>
+							
+							<button ng-if="editId===group.id" type="button" class="btn btn-success btn-sm" ng-click="saveEdit(group); setEditId(-1)" title="Save"><i class="glyphicon glyphicon-floppy-save"></i></button>
+    						<button ng-if="editId===group.id" type="button" class="btn btn-warning btn-sm" ng-click="cancelEdit(); setEditId(-1)" title="Cancel"><i class="glyphicon glyphicon-floppy-remove"></i></button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+	</div>
+	
+</div>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+		
+	<!-- ########################################################################################## -->
+	<!-- ############ IMPORT ###################################################################### -->	
+	<import resource="classpath:spring/spring-security.xml"/>
+	<import resource="classpath:spring/spring-websocket.xml"/>
+	<!-- ############ IMPORT ###################################################################### -->	
+	<!-- ########################################################################################## -->
+	
+
+	<!-- ########################################################################################## -->
+	<!-- ############ PROPERTIES ################################################################## -->		
+	<bean id="Properties" class="com.seaf.core.service.utils.SpringPropertiesUtil">
+	    <property name="location" value="classpath:properties/config.properties" />
+	    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_NEVER" />
+	</bean>
+	<!-- ############ PROPERTIES ################################################################## -->
+	<!-- ########################################################################################## -->
+	
+	
+	
+	<!-- ########################################################################################## -->
+	<!-- ############ STARTUP CLASS ############################################################### -->
+	<bean 	id="Startup"  class="com.seaf.core.service.utils.SpringStartup"  />
+	<!-- ############ STARTUP CLASS ############################################################### -->
+	<!-- ########################################################################################## -->
+	
+	
+	
+	<!-- ########################################################################################## -->
+	<!-- ############ SERVICES #################################################################### -->
+	<context:component-scan base-package="com.seaf.core.service.business, com.seaf.core.domain.dao" />
+	<!-- ############ SERVICES #################################################################### -->
+	<!-- ########################################################################################## -->
+
+
+
+	<!-- ########################################################################################## -->
+	<!-- ############ DATABASE #################################################################### -->
+
+	<!-- Database-related Configuration to connect with database -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		p:driverClassName="${database.datasource.driverClassName}" 
+		p:url="${database.datasource.url}"
+		p:username="${database.datasource.username}" 
+		p:password="${database.datasource.password}" />
+
+	<!-- Hibernate-related Configuration -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="com.seaf.core.domain.entity" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="connection.pool_size">${database.hibernate.connectionPoolSize}</prop>
+				<prop key="cache.provider_class">${database.hibernate.cacheProvider}</prop>
+				<prop key="hibernate.dialect">${database.hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${database.hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">${database.hibernate.format_sql}</prop>
+                <prop key="hibernate.hbm2ddl.auto">${database.hibernate.hbm2ddl.auto}</prop>
+                <prop key="hibernate.search.default.directory_provider">${database.hibernate.search.directory_provider}</prop>
+        		<prop key="hibernate.search.default.indexBase">${database.hibernate.search.index_base}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Transaction related configuration for working with database -->
+	<tx:annotation-driven />
+	
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- ############ DATABASE #################################################################### -->
+	<!-- ########################################################################################## -->
+
+</beans>

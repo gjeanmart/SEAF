@@ -1,0 +1,33 @@
+
+<!-- console.html -->
+<div class="jumbotron text-center container-all" >
+	<h1>Console</h1>
+	
+	<div class="console-wrap">
+	
+		<div class="alert-container" id="alerts"></div>
+		
+		<div>
+		Log file : 
+			<button type="button"
+					 class="btn btn-default" 
+					 ng-model="logFile" 
+					 ng-options="logFile for logFile in logFiles" 
+					 ng-change="selectLogFile()"
+					 bs-select>
+			  Action <span class="caret"></span>
+			</button>	        	
+	    </div>
+	    
+	    <div class="container-fluid ">
+	    	<ul class="nav nav-tabs marginBottom" id="tabs">
+    		</ul>
+    	</div>
+    	
+	    <div class="tab-content" id="console-box">
+	    </div>
+		
+	</div>
+	
+</div>
+

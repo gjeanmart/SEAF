@@ -1,0 +1,30 @@
+
+<!-- user-detail.html -->
+<div class="jumbotron text-center container-all">
+	<h1>{{user.firstName}} {{user.lastName}}</h1>
+	
+	<div class="onecolumn-wrap">
+	
+		<div class="alert-container" id="alerts"></div>
+
+			<div>
+				<p>ID : {{user.id}}</p>
+				<p>Email : {{user.email}}</p>
+				<p>Birst date : {{user.birthDate | date:'dd/MM/yyyy'}}</p>
+				<p>Added date : {{user.addedDate | date:'dd/MM/yyyy HH:mm'}}</p>
+				<p>Last modified date : {{user.lastModifiedDate | date:'dd/MM/yyyy HH:mm'}}</p>
+			</div>
+					
+			<div>
+				<h2>Groups</h2>
+				<div ng-repeat="group in user.groups">
+				  	{{group.id}} {{group.name}} {{group.description}}
+				</div>
+			</div>
+			
+			<div>
+				<button class="btn btn-link" ui-sref="user">Return</button>
+			</div>
+	</div>
+	
+</div>

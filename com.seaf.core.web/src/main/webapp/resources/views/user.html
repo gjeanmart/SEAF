@@ -1,0 +1,135 @@
+
+<!-- user.html -->
+<div class="jumbotron text-center container-all">
+	<h1>Users</h1>
+	
+	<div class="twocolumn-wrap">
+	
+		<div class="alert-container" id="alerts"></div>
+
+		<div class="twocolumn-form">
+		    <form name="userForm" class="form-horizontal" novalidate>
+	
+		      	<div class="form-group" show-errors='{showSuccess: true}'>
+		        	<label class="control-label col-xs-4">First name *</label>
+		        	<div class="col-xs-8">
+		        		<input type="text" class="form-control" name="firstName" ng-model="user.firstName" placeholder="First name" required />
+		        		<p class="help-block" ng-if="userForm.firstName.$error.required">The user's first name is required</p>
+		        	</div>
+		        	
+		      	</div>
+		      	
+		      	<div class="form-group" show-errors='{showSuccess: true}'>
+		        	<label class="control-label col-xs-4">Last name *</label>
+		        	<div class="col-xs-8">
+		        		<input type="text" class="form-control" name="lastName" ng-model="user.lastName" placeholder="Last name" required />
+		        		<p class="help-block" ng-if="userForm.lastName.$error.required">The user's last name is required</p>	
+		        	</div>
+		      	</div>
+		      
+		      	<div class="form-group" show-errors='{showSuccess: true}'>
+		        	<label class="control-label col-xs-4">Email *</label>
+		         	<div class="col-xs-8">
+		         		<input type="email" class="form-control" name="email" ng-model="user.email" placeholder="Email" required />
+		         		<p class="help-block" ng-if="userForm.email.$error.required">The user's email is required</p>
+		        		<p class="help-block" ng-if="userForm.email.$error.email">The email address is invalid</p>
+		         	</div>
+		      	</div>
+		      	
+			  	<div class="form-group"show-errors='{showSuccess: true}'>
+			  
+		        	<label class="control-label col-xs-4">Birth date</label>
+		         	<div class="col-xs-8">
+		         		<p class="input-group">
+		         			<input 	type="text" 
+		         					class="form-control" 
+		         					data-max-date="today" 
+		         					iconRight="glyphicon glyphicon-chevron-right" 
+		         					data-autoclose="1" 
+		         					ng-model="user.birthDate" 
+		         					name="birthdate" 
+		         					placeholder="Birth date" 
+		         					bs-datepicker />
+		         			<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+		         		</p>
+		         		<p class="help-block" ng-if="userForm.birthdate.$invalid">The birth date is invalid</p>    	
+		         	</div>
+			  	</div>
+
+		      	<div class="form-group" show-errors='{showSuccess: true}'>
+		        	<label class="control-label col-xs-4">Groups</label>
+		         	<div class="col-xs-8">
+						<p class="input-group">
+							<button type="button" 
+									name="groups"
+									placeholder="Choose groups ..."
+									max-length-html="groups selected"
+									class="btn btn-default" 
+									ng-model="user.groups" 
+									data-multiple="1" 
+									data-animation="am-flip-x" 
+									ng-options="group.name for group in groups track by group.id" 
+									bs-select>
+							  Action <span class="caret"></span>
+							</button>
+						</p>
+		         	</div>
+		      	</div>
+		      
+	       		<div class="form-group">
+	            	<div class="col-xs-offset-2 col-xs-10">
+		      			<button class="btn btn-primary" ng-click="addUser(user)">Add User</button>
+		      			<button class="btn btn-link" ng-click="reset()">Reset</button>
+	            	</div>
+	            </div>
+		    </form>
+		</div>
+
+		<div class="twocolumn-table">
+			<table ng-table="usersTableParams" show-filter="true" class="table table-striped table-bordered">
+				<tbody>
+					<tr ng-repeat="user in $data">
+						<td data-title="'#'" sortable="'id'">{{user.id}}</td>
+						<td data-title="'Last name'" filter="{ 'lastName': 'text' }" sortable="'lastName'">
+							<span ng-if="editId!==user.id">{{user.lastName}}</span>
+							<div ng-if="editId===user.id">
+								<input class="form-control" type="text" ng-model="user.lastName" required />
+							</div>
+						</td>
+						<td data-title="'First name'" filter="{ 'firstName': 'text' }" sortable="'firstName'">
+							<span ng-if="editId!==user.id">{{user.firstName}}</span>
+							<div ng-if="editId===user.id">
+								<input class="form-control" type="text" ng-model="user.firstName" required />
+							</div>
+						</td>
+						<td data-title="'Email'"  filter="{ 'email': 'text' }" sortable="'email'">
+							<span ng-if="editId!==user.id">{{user.email}}</span>
+							<div ng-if="editId===user.id">
+								<input class="form-control" type="email" ng-model="user.email" required />
+							</div>
+						</td>
+						<td data-title="'Birth'" sortable="'birthDate'">
+							<span ng-if="editId!==user.id">{{user.birthDate | date:'dd/MM/yyyy'}}</span>
+							<div class="input-group" ng-if="editId===user.id">
+				         		<p class="input-group">
+				         			<input type="text" class="form-control" data-max-date="today" iconRight="glyphicon glyphicon-chevron-right" data-autoclose="1" ng-model="user.birthDate" name="birthdate" placeholder="Birth date" bs-datepicker>
+				         			<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+				         		</p>
+							</div>
+						</td>
+						<td data-title="'Actions'" width="130">
+												
+							<button ui-sref="user_detail({ userid : user.id })" type="button" class="btn btn-sm" title="Detail"><i class="glyphicon glyphicon-user"></i></button>
+							
+							<button ui-sref="user_edit({ userid : user.id })" type="button" class="btn btn-primary btn-sm"  title="Edit"><i class="glyphicon glyphicon-edit"></i></button>
+							<button type="button" class="btn btn-danger btn-sm" ng-click="deleteUser(user)" title="Delete"><i class="glyphicon glyphicon-remove"></i></button>
+
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+	</div>
+	
+</div>
