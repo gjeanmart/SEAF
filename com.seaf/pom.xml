@@ -24,6 +24,28 @@
 						<target>1.8</target>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<configuration>
+						<webapps>
+							<webapp>
+								<groupId>com.seaf</groupId>
+								<artifactId>com.seaf.core.service</artifactId>
+								<version>0.0.1-SNAPSHOT</version>
+								<type>war</type>
+                                <asWebapp>true</asWebapp>
+                            </webapp>
+							<webapp>
+								<groupId>com.seaf</groupId>
+								<artifactId>com.seaf.core.web</artifactId>
+								<version>0.0.1-SNAPSHOT</version>
+								<type>war</type>
+                                <asWebapp>true</asWebapp>
+                            </webapp>
+						</webapps>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
