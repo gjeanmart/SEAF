@@ -43,8 +43,8 @@ public class ApiExceptionHandler {
     
     @RequestMapping("methodNotAllowed")
     public @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED) @ResponseBody ApiException methodNotAllowedExceptionHandler(HttpServletRequest request) throws Exception {
-		ApiException apiException = new ApiException();
-		apiException.setHttpCode(HttpStatus.METHOD_NOT_ALLOWED.value());
+
+		ApiException apiException = new ApiException();apiException.setHttpCode(HttpStatus.METHOD_NOT_ALLOWED.value());
 		apiException.setHttpStatus(HttpStatus.METHOD_NOT_ALLOWED.name());
 		apiException.setMessage("A request was made of a resource using a request method not supported by that resource; for example, using GET on a form which requires data to be presented via POST, or using PUT on a read-only resource.");
 		apiException.setUrl(request.getRequestURL().toString());

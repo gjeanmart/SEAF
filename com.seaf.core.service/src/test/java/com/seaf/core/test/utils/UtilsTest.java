@@ -27,7 +27,22 @@ public final class UtilsTest {
 	public static final String 	USER2_LASTNAME		= "LEGAY";
 	public static final String 	USER2_EMAIL			= "ilegay87@gmail.com";
 	public static final String 	USER2_BIRTH			= "18/06/1987";
-	
+
+	public static final String 	USER3_FIRSTNAME		= "Frederic";
+	public static final String 	USER3_LASTNAME		= "JEANMART";
+	public static final String 	USER3_EMAIL			= "fff@gmail.com";
+	public static final String 	USER3_BIRTH			= "11/03/1960";
+
+	public static final String 	USER4_FIRSTNAME		= "Marie";
+	public static final String 	USER4_LASTNAME		= "JEANMART";
+	public static final String 	USER4_EMAIL			= "mmm@gmail.com";
+	public static final String 	USER4_BIRTH			= "15/01/1958";
+
+	public static final String 	USER5_FIRSTNAME		= "Damien";
+	public static final String 	USER5_LASTNAME		= "JEANMART";
+	public static final String 	USER5_EMAIL			= "damien@gmail.com";
+	public static final String 	USER5_BIRTH			= "17/03/1990";
+
 	public static Date getDate(String date) {
 		try {
 			return simpleDateFormat.parse(date);
