@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +15,6 @@ import com.seaf.core.domain.entity.User;
 import com.seaf.core.service.business.exception.UserGroupException;
 import com.seaf.core.service.model.GroupDto;
 import com.seaf.core.service.model.UserDto;
-import com.seaf.core.service.model.converter.GroupConverter;
-import com.seaf.core.service.model.converter.UserConverter;
 import com.seaf.core.service.model.utils.EnvelopeList;
 import com.seaf.core.service.model.validation.GroupDtoValidation;
 import com.seaf.core.service.model.validation.UserDtoValidation;
@@ -27,7 +26,10 @@ public class UserGroupServiceImpl implements UserGroupService {
 	private UserDao userDao;
 	
 	@Autowired
-	private GroupDao groupDao;	
+	private GroupDao groupDao;
+
+	@Autowired
+	private Mapper mapper;
 
 	public EnvelopeList getUsers(String searchQuery, int pageNumber, int pageSize, String sortAttribute, String sortDirection) {
 		List<UserDto>		result 		= new ArrayList<UserDto>();
@@ -44,7 +46,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 
 		
 		for(User user : userList) {
-			result.add(UserConverter.convertUserToUserDto(user));
+			result.add(mapper.map(user, UserDto.class));
 		}
 		
 		EnvelopeList envelop = new EnvelopeList();
@@ -61,7 +63,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 			throw new UserGroupException(UserGroupException.EXCEPTION_CODE_USERNOTEXIST, "User [id="+userId+"] doesn't exist");
 		}
 
-		return UserConverter.convertUserToUserDto(user);
+		return mapper.map(user, UserDto.class);
 	}
 
 
@@ -72,11 +74,11 @@ public class UserGroupServiceImpl implements UserGroupService {
 		
 		userDto.setAddedDate(new Date());
 		userDto.setLastModifiedDate(new Date());
-		userDao.insertUser(UserConverter.convertUserDtoToUser(userDto));
+		userDao.insertUser(mapper.map(userDto, User.class, "User-Model2DTO"));
 		
 		User userInserted = userDao.selectUserByEmail(userDto.getEmail());
 		
-		return UserConverter.convertUserToUserDto(userInserted);
+		return mapper.map(userInserted, UserDto.class, "User-Model2DTO");
 	}
 
 	@Override
@@ -88,11 +90,11 @@ public class UserGroupServiceImpl implements UserGroupService {
 		
 		userDto.setAddedDate(user.getAddedDate());
 		userDto.setLastModifiedDate(new Date());
-		userDao.updateUser(UserConverter.convertUserDtoToUser(userDto));
+		userDao.updateUser(mapper.map(userDto, User.class, "User-Model2DTO"));
 		
 		User userUpdated = userDao.selectUserById(userId);
 		
-		return UserConverter.convertUserToUserDto(userUpdated);
+		return mapper.map(userUpdated, UserDto.class, "User-Model2DTO");
 	}
 
 	@Override
@@ -106,7 +108,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 	public EnvelopeList getGroups(String searchQuery, int pageNumber, int pageSize, String sortAttribute, String sortDirection) {
 		List<GroupDto>		result 		= new ArrayList<GroupDto>();
 		List<Group> 		groupList	= null;
-		long				count		= 0;
+		long				count;
 		
 		if(searchQuery == null) {
 			groupList 	= groupDao.selectGroups(pageNumber, pageSize, sortAttribute, sortDirection);
@@ -118,7 +120,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 
 		
 		for(Group group : groupList) {
-			result.add(GroupConverter.convertGroupToGroupDto(group));
+			result.add(mapper.map(group, GroupDto.class, "Group-Model2DTO"));
 		}
 		
 		EnvelopeList envelop = new EnvelopeList();
@@ -136,7 +138,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 			throw new UserGroupException(UserGroupException.EXCEPTION_CODE_GROUPNOTEXIST, "Group [id="+group+"] doesn't exist");
 		}
 
-		return GroupConverter.convertGroupToGroupDto(group);
+		return mapper.map(group, GroupDto.class, "Group-Model2DTO");
 	}
 
 	@Override
@@ -146,11 +148,11 @@ public class UserGroupServiceImpl implements UserGroupService {
 		
 		group.setAddedDate(new Date());
 		group.setLastModifiedDate(new Date());
-		groupDao.insertGroup(GroupConverter.convertroGroupDtoToGroup(group));
+		groupDao.insertGroup(mapper.map(group, Group.class, "Group-Model2DTO"));
 		
 		Group groupInserted = groupDao.selectGroupByName(group.getName());
 		
-		return GroupConverter.convertGroupToGroupDto(groupInserted);
+		return mapper.map(groupInserted, GroupDto.class, "Group-Model2DTO");
 	}
 
 	@Override
@@ -163,11 +165,11 @@ public class UserGroupServiceImpl implements UserGroupService {
 		
 		groupDto.setAddedDate(group.getAddedDate());
 		groupDto.setLastModifiedDate(new Date());
-		groupDao.updateGroup(GroupConverter.convertroGroupDtoToGroup(groupDto));
+		groupDao.updateGroup(mapper.map(groupDto, Group.class, "Group-Model2DTO"));
 		
 		Group groupUpdated = groupDao.selectGroupById(group.getId());
-		
-		return GroupConverter.convertGroupToGroupDto(groupUpdated);
+
+        return mapper.map(groupUpdated, GroupDto.class, "Group-Model2DTO");
 	}
 
 	@Override
@@ -189,7 +191,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 		}
 		
 		for(Group group: user.getGroups()) {
-			result.add(GroupConverter.convertGroupToGroupDto(group));
+			result.add(mapper.map(group, GroupDto.class, "Group-Model2DTO"));
 		}
 
 		return result;
@@ -206,7 +208,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 		}
 		
 		for(User user : group.getUsers()) {
-			result.add(UserConverter.convertUserToUserDto(user));
+			result.add(mapper.map(user, UserDto.class, "User-Model2DTO"));
 		}
 
 		return result;
@@ -233,7 +235,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 		user.getGroups().add(group);
 		userDao.updateUser(user);
 		
-		return GroupConverter.convertGroupToGroupDto(group);
+		return mapper.map(group, GroupDto.class, "Group-Model2DTO");
 	}
 
 	@Override

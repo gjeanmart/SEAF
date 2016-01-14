@@ -2,7 +2,8 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans
@@ -38,8 +39,19 @@
 	<bean 	id="Startup"  class="com.seaf.core.service.utils.SpringStartup"  />
 	<!-- ############ STARTUP CLASS ############################################################### -->
 	<!-- ########################################################################################## -->
-	
-	
+
+	<!-- ########################################################################################## -->
+	<!-- ############ DOZER #################################################################### -->
+	<bean id="org.dozer.Mapper" class="org.dozer.DozerBeanMapper">
+		<property name="mappingFiles">
+			<list>
+				<value>mapping/dozer-mapping.xml</value>
+			</list>
+		</property>
+	</bean>
+	<!-- ############ DOZER #################################################################### -->
+	<!-- ########################################################################################## -->
+
 	
 	<!-- ########################################################################################## -->
 	<!-- ############ SERVICES #################################################################### -->
@@ -88,5 +100,6 @@
 	</bean>
 	<!-- ############ DATABASE #################################################################### -->
 	<!-- ########################################################################################## -->
+
 
 </beans>

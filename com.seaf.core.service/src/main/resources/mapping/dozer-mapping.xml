@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <configuration>
+        <wildcard>false</wildcard>
+    </configuration>
+
+    <!-- Mapping from Group to GroupDto -->
+    <mapping map-id="Group-Model2DTO" map-null="false">
+        <class-a>com.seaf.core.domain.entity.Group</class-a>
+        <class-b>com.seaf.core.service.model.GroupDto</class-b>
+        <field>
+            <a>id</a>
+            <b>id</b>
+        </field>
+        <field>
+            <a>name</a>
+            <b>name</b>
+        </field>
+        <field>
+            <a>description</a>
+            <b>description</b>
+        </field>
+        <field>
+            <a>addedDate</a>
+            <b>addedDate</b>
+        </field>
+        <field>
+            <a>lastModifiedDate</a>
+            <b>lastModifiedDate</b>
+        </field>
+        <!--
+                <field  type="one-way">
+                    <a>users</a>
+                    <b>users</b>
+                </field>
+        -->
+    </mapping>
+
+    <mapping map-id="User-Model2DTO" map-null="false">
+        <class-a>com.seaf.core.domain.entity.User</class-a>
+        <class-b>com.seaf.core.service.model.UserDto</class-b>
+        <field>
+            <a>id</a>
+            <b>id</b>
+        </field>
+        <field>
+            <a>email</a>
+            <b>email</b>
+        </field>
+        <field>
+            <a>firstName</a>
+            <b>firstName</b>
+        </field>
+        <field>
+            <a>lastName</a>
+            <b>lastName</b>
+        </field>
+        <!--
+        <field>
+            <a>password</a>
+            <b>password</b>
+        </field>
+        -->
+        <field>
+            <a>birthDate</a>
+            <b>birthDate</b>
+        </field>
+        <field>
+            <a>addedDate</a>
+            <b>addedDate</b>
+        </field>
+        <field>
+            <a>lastModifiedDate</a>
+            <b>lastModifiedDate</b>
+        </field>
+        <!--
+        <field>
+            <a>groups</a>
+            <b>groups</b>
+        </field>
+        -->
+    </mapping>
+</mappings>
