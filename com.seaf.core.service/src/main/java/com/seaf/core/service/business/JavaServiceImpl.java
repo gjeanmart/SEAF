@@ -185,11 +185,7 @@ public class JavaServiceImpl implements JavaService {
 			data = threadsDtoList;
 		}
 		
-		EnvelopeList envelope = new EnvelopeList();
-		envelope.setData(data);
-		envelope.setTotal(threadsDtoList.size());
-
-		return envelope;
+		return new EnvelopeList(data, threadsDtoList.size());
 	}
 
 	@Override
@@ -216,11 +212,7 @@ public class JavaServiceImpl implements JavaService {
 			data = systemProperties;
 		}
 		
-		EnvelopeList envelope = new EnvelopeList();
-		envelope.setData(data);
-		envelope.setTotal(systemProperties.size());
-
-		return envelope;
+		return new EnvelopeList(data, systemProperties.size());
 	}
 
 	@Override
@@ -261,11 +253,7 @@ public class JavaServiceImpl implements JavaService {
 			data = jvmArgumentsList;
 		}
 		
-		EnvelopeList envelope = new EnvelopeList();
-		envelope.setData(data);
-		envelope.setTotal(jvmArgumentsList.size());
-
-		return envelope;
+		return new EnvelopeList(data, jvmArgumentsList.size());
 		
 	}
 
@@ -293,11 +281,7 @@ public class JavaServiceImpl implements JavaService {
 			data = appProperties;
 		}
 		
-		EnvelopeList envelope = new EnvelopeList();
-		envelope.setData(data);
-		envelope.setTotal(appProperties.size());
-
-		return envelope;
+		return new EnvelopeList(data, appProperties.size());
 	}
 
 }

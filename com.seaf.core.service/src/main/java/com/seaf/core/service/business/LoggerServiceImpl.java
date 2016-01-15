@@ -78,11 +78,7 @@ public class LoggerServiceImpl implements LoggerService {
 			data = loggerList;
 		}
 		
-		EnvelopeList envelope = new EnvelopeList();
-		envelope.setData(data);
-		envelope.setTotal(loggerList.size());
-
-		return envelope;
+		return new EnvelopeList(data, loggerList.size());
 	}
 
 	@Override

@@ -6,6 +6,12 @@ public class EnvelopeList {
 	
 	private List<?> data;
 	private long	total;
+
+	public EnvelopeList(List<?> data, long total) {
+		this.data = data;
+		this.total = total;
+	}
+
 	public List<?> getData() {
 		return data;
 	}

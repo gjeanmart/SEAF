@@ -49,11 +49,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 			result.add(mapper.map(user, UserDto.class));
 		}
 		
-		EnvelopeList envelop = new EnvelopeList();
-		envelop.setData(result);
-		envelop.setTotal(count);
-
-		return envelop;
+		return new EnvelopeList(result, count);
 	}
 
 	public UserDto getUser(int userId) throws UserGroupException {
@@ -123,11 +119,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 			result.add(mapper.map(group, GroupDto.class, "Group-Model2DTO"));
 		}
 		
-		EnvelopeList envelop = new EnvelopeList();
-		envelop.setData(result);
-		envelop.setTotal(count);
-
-		return envelop;
+		return new EnvelopeList(result, count);
 	}
 
 	@Override
