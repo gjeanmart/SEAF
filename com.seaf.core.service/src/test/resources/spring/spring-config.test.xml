@@ -23,7 +23,7 @@
 	
 	<!-- ########################################################################################## -->
 	<!-- ############ PROPERTIES ################################################################### -->		
-	<bean id="Properties" class="com.seaf.core.service.utils.SpringPropertiesUtil">
+	<bean id="Properties" class="com.seaf.core.utils.SpringPropertiesUtil">
 	    <property name="location" value="classpath:properties/config.test.properties" />
 	    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_NEVER" />
 	</bean>
@@ -45,7 +45,7 @@
 
 	<!-- ########################################################################################## -->
 	<!-- ############ STARTUP CLASS ############################################################### -->
-	<bean 	id="Startup"  class="com.seaf.core.service.utils.SpringStartup"  />
+	<bean 	id="Startup"  class="com.seaf.core.utils.SpringStartup"  />
 	<!-- ############ STARTUP CLASS ############################################################### -->
 	<!-- ########################################################################################## -->
 	

@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>com.seaf</groupId>
 		<artifactId>com.seaf.parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 		<relativePath>../com.seaf/pom.xml</relativePath>
 	</parent>
 
@@ -32,6 +32,12 @@
 		<!-- Security -->
 		<spring-security.version>3.2.5.RELEASE</spring-security.version>
 		<!-- <spring-security-oauth2.version>2.0.3.RELEASE</spring-security-oauth2.version> -->
+
+		<!-- Database -->
+		<hibernate.version>4.3.6.Final</hibernate.version>
+		<hibernate-search.version>5.0.0.Alpha7</hibernate-search.version>
+		<postgresqljdbc.version>9.3-1102-jdbc41</postgresqljdbc.version>
+		<hsqldb.version>2.3.2</hsqldb.version>
 
 		<!-- Logging -->
 		<logback.version>1.1.2</logback.version>
@@ -146,6 +152,53 @@
 			<scope>compile</scope> 
 		</dependency> -->
 
+		<!-- Database -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search</artifactId>
+			<version>${hibernate-search.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${postgresqljdbc.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>${hsqldb.version}</version>
+		</dependency>
+
 		<!-- Utlis -->
 		<dependency>
 			<groupId>commons-codec</groupId>
@@ -218,7 +271,7 @@
 		<dependency>
 			<groupId>com.seaf</groupId>
 			<artifactId>com.seaf.core.domain</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.2-SNAPSHOT</version>
 		</dependency>
 
 	</dependencies>

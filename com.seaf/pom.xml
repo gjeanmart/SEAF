@@ -4,11 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.seaf</groupId>
 	<artifactId>com.seaf.parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>../com.seaf.core.domain</module>
 		<module>../com.seaf.core.service</module>
 		<module>../com.seaf.core.web</module>
 	</modules>
@@ -32,14 +31,14 @@
 							<webapp>
 								<groupId>com.seaf</groupId>
 								<artifactId>com.seaf.core.service</artifactId>
-								<version>0.0.1-SNAPSHOT</version>
+								<version>0.0.2-SNAPSHOT</version>
 								<type>war</type>
                                 <asWebapp>true</asWebapp>
                             </webapp>
 							<webapp>
 								<groupId>com.seaf</groupId>
 								<artifactId>com.seaf.core.web</artifactId>
-								<version>0.0.1-SNAPSHOT</version>
+								<version>0.0.2-SNAPSHOT</version>
 								<type>war</type>
                                 <asWebapp>true</asWebapp>
                             </webapp>

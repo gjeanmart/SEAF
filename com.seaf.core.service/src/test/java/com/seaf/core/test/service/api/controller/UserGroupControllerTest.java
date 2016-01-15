@@ -1,10 +1,9 @@
-package com.seaf.core.test.service.api.controller;
+/*package com.seaf.core.test.service.api.controller;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.util.Arrays;
-import java.util.List;
 
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -33,15 +32,11 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.seaf.core.service.api.exception.ApiException;
 import com.seaf.core.service.business.UserGroupService;
-import com.seaf.core.service.business.exception.UserGroupException;
-import com.seaf.core.service.model.GroupDto;
 import com.seaf.core.service.model.UserDto;
 import com.seaf.core.test.utils.UtilsTest;
 
@@ -108,7 +103,7 @@ public class UserGroupControllerTest {
 		}
 	}
 
-	/*
+
 	@After
 	public void tearDown() throws UserGroupException {
 		for (UserDto user : (List<UserDto>)userGroupService.getUsers(null, UtilsTest.PAGE_NUMBER, UtilsTest.PAGE_SIZE,null,null).getData()) {
@@ -119,7 +114,7 @@ public class UserGroupControllerTest {
 			userGroupService.deleteGroup(group.getId());
 		}
 	}
-*/
+
 	@Test
 	public void createUserTest() throws JsonProcessingException {
 		UserDto user = new UserDto();
@@ -146,7 +141,7 @@ public class UserGroupControllerTest {
 		assertEquals(UtilsTest.USER1_FIRSTNAME, userSearched.getFirstName());
 		assertEquals(userInserted.getId(), userSearched.getId());		
 	}
-	/*
+
 	@Test
 	public void updateUserTest() throws JsonProcessingException {
 		UserDto user = new UserDto();
@@ -213,6 +208,7 @@ public class UserGroupControllerTest {
 		}
 
 	}
-	*/
+
 
 }
+*/

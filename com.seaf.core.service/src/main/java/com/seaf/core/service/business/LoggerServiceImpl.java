@@ -27,7 +27,7 @@ import com.seaf.core.service.business.exception.LoggerException;
 import com.seaf.core.service.model.LoggerDto;
 import com.seaf.core.service.model.comparator.LoggerDtoComparator;
 import com.seaf.core.service.model.utils.EnvelopeList;
-import com.seaf.core.service.websocket.KeyWebSocketTailer;
+import com.seaf.core.connector.websocket.KeyWebSocketTailer;
 
 @Component
 public class LoggerServiceImpl implements LoggerService {

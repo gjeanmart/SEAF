@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="com.seaf.core.api" version="2.5">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="com.seaf.core.connector" version="2.5">
   <display-name>com.seaf.core.service</display-name>
   <context-param>
     <param-name>contextConfigLocation</param-name>
@@ -44,6 +44,6 @@
   </error-page>
   <error-page>
     <error-code>500</error-code>
-    <location>/errors/intertalError</location>
+    <location>/errors/internalError</location>
   </error-page>  
 </web-app>

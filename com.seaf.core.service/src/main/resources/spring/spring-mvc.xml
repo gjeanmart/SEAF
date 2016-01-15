@@ -30,7 +30,7 @@
 
 	<!-- ########################################################################################## -->
 	<!-- ############ MVC CONTROLLER ############################################################## -->
-	<context:component-scan base-package="com.seaf.core.service.api.controller, com.seaf.core.service.api.exception"/>  
+	<context:component-scan base-package="com.seaf.core.connector.rest.controller, com.seaf.core.connector.rest.exception"/>
 	<!-- ############ MVC CONTROLLER ############################################################## -->
 	<!-- ########################################################################################## -->
 	
@@ -38,7 +38,7 @@
 	<!-- ########################################################################################## -->
 	<!-- ############ SWAGGER ##################################################################### --> 
 	<bean class="com.mangofactory.swagger.configuration.SpringSwaggerConfig" />
-	<bean class="com.seaf.core.service.api.config.MySwaggerConfig"/>
+	<bean class="com.seaf.core.connector.rest.config.MySwaggerConfig"/>
 	<!-- ############ SWAGGER ###################################################################### -->
 	<!-- ########################################################################################## -->
 	

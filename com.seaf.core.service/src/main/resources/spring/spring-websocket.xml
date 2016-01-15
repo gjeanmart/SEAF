@@ -16,7 +16,7 @@
         <websocket:sockjs/>
     </websocket:handlers>
 
-    <bean id="LogWebSocketHandler" class="com.seaf.core.service.websocket.LogWebSocketHandler"/>
+    <bean id="LogWebSocketHandler" class="com.seaf.core.connector.websocket.KeyWebSocketTailer.LogWebSocketHandler"/>
     <!-- ############ WEB SOCKET ################################################################## -->
     <!-- ########################################################################################## -->
     

@@ -28,7 +28,7 @@ import com.seaf.core.service.model.ThreadDto;
 import com.seaf.core.service.model.comparator.KeyValueDtoComparator;
 import com.seaf.core.service.model.comparator.ThreadDtoComparator;
 import com.seaf.core.service.model.utils.EnvelopeList;
-import com.seaf.core.service.utils.SpringPropertiesUtil;
+import com.seaf.core.utils.SpringPropertiesUtil;
 import com.sun.management.OperatingSystemMXBean;
 
 @SuppressWarnings("restriction")
