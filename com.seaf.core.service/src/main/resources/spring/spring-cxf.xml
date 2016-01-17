@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+            http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+            http://www.springframework.org/schema/util
+            http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+    <import resource="classpath:META-INF/cxf/cxf.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+    <!--
+    <bean id="mockDataLayer" class="com.questforapps.webservice.dao.ProductServiceMockDaoImpl"/>
+    -->
+
+    <bean id="userGroupWebServiceImpl" class="com.seaf.core.connector.soap.UserGroupWebServiceImpl">
+        <!--
+        <property name="productServiceMockImpl">
+            <ref bean="mockDataLayer"/>
+        </property>
+        -->
+    </bean>
+
+    <!-- SOAP -->
+    <jaxws:endpoint
+            id="userGroupWebServiceEndpoint"
+            implementor="#userGroupWebServiceImpl"
+            address="/soap" />
+
+    <!-- REST SERVER -->
+
+    <!-- PROVIDERS -->
+    <bean id="wadlProvider" class="org.apache.cxf.jaxrs.model.wadl.WadlGenerator">
+        <property name="applicationTitle" value="CXF Test sample application" />
+    </bean>
+
+    <bean id="jaxbProvider" class="org.apache.cxf.jaxrs.provider.JAXBElementProvider">
+        <property name="marshallerProperties" ref="propertiesMap" />
+    </bean>
+    <util:map id="propertiesMap">
+        <entry key="jaxb.formatted.output">
+            <value type="java.lang.Boolean">true</value>
+        </entry>
+    </util:map>
+
+    <bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider"/>
+
+        <jaxrs:server id="restContainer" address="/rest">
+            <jaxrs:providers>
+                <ref bean="jaxbProvider" />
+                <ref bean="jsonProvider" />
+                <ref bean="wadlProvider" />
+            </jaxrs:providers>
+            <jaxrs:serviceBeans>
+                <ref bean="userGroupWebServiceImpl"/>
+            </jaxrs:serviceBeans>
+            <jaxrs:extensionMappings>
+                <entry key="xml" value="application/xml" />
+                <entry key="json" value="application/json" />
+            </jaxrs:extensionMappings>
+        </jaxrs:server>
+    </beans>

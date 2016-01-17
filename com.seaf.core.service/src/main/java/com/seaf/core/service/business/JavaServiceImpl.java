@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 
 import com.seaf.core.domain.dao.MonitoringDao;
 import com.seaf.core.domain.entity.Monitoring;
-import com.seaf.core.domain.enumeration.Periodicity;
+import com.seaf.core.domain.entity.enumeration.Periodicity;
 import com.seaf.core.service.model.CpuMonitoringDto;
 import com.seaf.core.service.model.HeapMonitoringDto;
 import com.seaf.core.service.model.KeyValueDto;

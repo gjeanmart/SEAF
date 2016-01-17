@@ -24,13 +24,13 @@
 		<servlet.version>3.1.0</servlet.version>
 
 		<!-- Spring -->
-		<spring-framework.version>4.1.2.RELEASE</spring-framework.version>
+		<spring-framework.version>4.2.4.RELEASE</spring-framework.version>
 		
 		<!-- Integration -->
-		<spring-integration.version>4.1.0.RELEASE</spring-integration.version>
+		<spring-integration.version>4.2.4.RELEASE</spring-integration.version>
 
 		<!-- Security -->
-		<spring-security.version>3.2.5.RELEASE</spring-security.version>
+		<spring-security.version>4.0.3.RELEASE</spring-security.version>
 		<!-- <spring-security-oauth2.version>2.0.3.RELEASE</spring-security-oauth2.version> -->
 
 		<!-- Database -->
@@ -38,6 +38,12 @@
 		<hibernate-search.version>5.0.0.Alpha7</hibernate-search.version>
 		<postgresqljdbc.version>9.3-1102-jdbc41</postgresqljdbc.version>
 		<hsqldb.version>2.3.2</hsqldb.version>
+
+		<!-- Web Service -->
+		<cxf.version>3.0.7</cxf.version>
+
+		<!-- Mapping -->
+		<dozer.version>5.5.1</dozer.version>
 
 		<!-- Logging -->
 		<logback.version>1.1.2</logback.version>
@@ -137,6 +143,17 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.4.2</version>
 		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-jaxrs</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-xc</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+
 
 		<!-- REST -->
 		<dependency>
@@ -199,6 +216,37 @@
 			<version>${hsqldb.version}</version>
 		</dependency>
 
+		<!-- WebService -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-service-description</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-extension-providers</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+
+
+		<!-- Mapping -->
+		<dependency>
+			<groupId>net.sf.dozer</groupId>
+			<artifactId>dozer</artifactId>
+			<version>${dozer.version}</version>
+		</dependency>
+
+
 		<!-- Utlis -->
 		<dependency>
 			<groupId>commons-codec</groupId>
@@ -209,6 +257,16 @@
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jettison</groupId>
+			<artifactId>jettison</artifactId>
+			<version>1.3.7</version>
 		</dependency>
 
 		
@@ -260,19 +318,6 @@
 			<version>4.3.5</version>
 		</dependency>
 
-		<dependency>
-			<groupId>net.sf.dozer</groupId>
-			<artifactId>dozer</artifactId>
-			<version>5.5.1</version>
-		</dependency>
-
-
-		<!-- Projects -->
-		<dependency>
-			<groupId>com.seaf</groupId>
-			<artifactId>com.seaf.core.domain</artifactId>
-			<version>0.0.2-SNAPSHOT</version>
-		</dependency>
 
 	</dependencies>
 

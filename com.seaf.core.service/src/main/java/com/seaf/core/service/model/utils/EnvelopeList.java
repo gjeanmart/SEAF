@@ -1,9 +1,13 @@
 package com.seaf.core.service.model.utils;
 
+import com.seaf.core.service.model.UserDto;
+
+import javax.xml.bind.annotation.*;
 import java.util.List;
 
+@XmlSeeAlso(UserDto.class)
 public class EnvelopeList {
-	
+
 	private List<?> data;
 	private long	total;
 

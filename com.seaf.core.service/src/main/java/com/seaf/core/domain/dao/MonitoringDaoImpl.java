@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.seaf.core.domain.entity.Monitoring;
-import com.seaf.core.domain.enumeration.Periodicity;
+import com.seaf.core.domain.entity.enumeration.Periodicity;
 
 @Component
 @Transactional

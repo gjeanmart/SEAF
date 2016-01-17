@@ -19,6 +19,8 @@
 	<!-- ############ IMPORT ###################################################################### -->	
 	<import resource="classpath:spring/spring-security.xml"/>
 	<import resource="classpath:spring/spring-websocket.xml"/>
+    <!---->
+    <import resource="classpath:spring/spring-cxf.xml"/>
 	<!-- ############ IMPORT ###################################################################### -->	
 	<!-- ########################################################################################## -->
 	

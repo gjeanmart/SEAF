@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.seaf.core.domain.enumeration.Periodicity;
+import com.seaf.core.domain.entity.enumeration.Periodicity;
 import com.seaf.core.connector.rest.exception.ApiException;
 import com.seaf.core.service.business.JavaService;
 import com.seaf.core.service.business.exception.LoggerException;

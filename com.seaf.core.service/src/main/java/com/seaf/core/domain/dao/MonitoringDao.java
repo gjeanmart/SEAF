@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.seaf.core.domain.entity.Monitoring;
-import com.seaf.core.domain.enumeration.Periodicity;
+import com.seaf.core.domain.entity.enumeration.Periodicity;
 
 public interface MonitoringDao {
 	

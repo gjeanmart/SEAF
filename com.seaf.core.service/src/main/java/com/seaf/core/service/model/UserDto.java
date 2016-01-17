@@ -1,5 +1,6 @@
 package com.seaf.core.service.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;

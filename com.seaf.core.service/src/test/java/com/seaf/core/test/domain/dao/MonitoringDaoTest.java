@@ -19,7 +19,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import com.seaf.core.domain.dao.MonitoringDao;
 import com.seaf.core.domain.entity.Monitoring;
 import com.seaf.core.domain.entity.key.MonitoringKey;
-import com.seaf.core.domain.enumeration.Periodicity;
+import com.seaf.core.domain.entity.enumeration.Periodicity;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"/spring/spring-config.test.xml" })

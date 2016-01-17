@@ -46,7 +46,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 
 		
 		for(User user : userList) {
-			result.add(mapper.map(user, UserDto.class));
+			result.add(mapper.map(user, UserDto.class, "User-Model2DTO"));
 		}
 		
 		return new EnvelopeList(result, count);
